@@ -28,11 +28,37 @@ public:
    //~Stack_str();                           // Destructor
 
    // Stack operations
-   bool isEmpty() {/* Write your code here */ }
+
+   // Checks to see if there are nodes in the stack
+   bool isEmpty() {
+      return length == 0;
+    }
+
    bool push(string);
    // string pop();
-   string peek() {/* Write your code here */ }
-   int getLength() {/* Write your code here */ }
+
+   // Checks to see if the node is empty and returns the value at the top of the stack
+   string peek() {
+      if( !isEmpty() ) {
+         return top->value;
+      }
+      else {
+         return "Empty Stack!";
+      }
+   }
+
+   // Counts the number of nodes in the stack until it reaches the null pointer
+   int getLength() {
+      int count = 0;
+      StackNode* curr = top;
+
+      while( curr != nullptr ) {
+         count += 1;
+         curr = curr->next;
+      }
+
+      return count;
+   }
 };
 
 /**~*~*~*
@@ -62,7 +88,21 @@ int main() {
      Stack_str s;
      string item;
 
-     /* Write your code here */
+     // Adding strings into a stack until the user enters 0
+     while( true ) { // While loop is true until 0 is entered
+         getline(cin, item); // getline ignores spaces
+         if( item == "0") {
+            break;
+         }
+         s.push(item);
+     }
+
+     cout << s.getLength() << endl;
+     cout << s.peek() << endl;
+     cout << s.getLength() << endl;
+
+
+   
      
      return 0;
 }

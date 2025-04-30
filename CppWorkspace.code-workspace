@@ -7,7 +7,12 @@
 	"settings": {
 		"files.associations": {
 			"vector": "cpp",
-			"iostream": "cpp"
+			"iostream": "cpp",
+			"xstring": "cpp",
+			"stdexcept": "cpp",
+			"algorithm": "cpp",
+			"ios": "cpp",
+			"xutility": "cpp"
 		}
 	}
 }

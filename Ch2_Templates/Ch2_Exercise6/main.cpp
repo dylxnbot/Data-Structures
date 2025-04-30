@@ -92,18 +92,36 @@ int main() {
 	
 	cin >> zip;
 
-   for (i = 0; i < zipCodeState.size(); ++i) {
+	string zipAbbrev = "";
+	for (i = 0; i < zipCodeState.size(); ++i) {
 		// TODO: Using ZIP code, find state abbreviation
+		if( zipCodeState[i].GetKey() == zip) { // <-- zipCodeState[i] accesses the i'th element in vector StatePair<int, string> || This turns zipCodeState[i] into a StatePair<int, string> object
+											   // ^-- .GetKey() calls the getter method in StatePair.h which returns the key, which is the ZIP code as an int
+			zipAbbrev = zipCodeState[i].GetValue(); // <-- Once the two zips match, .GetValue retrieves the string from the StatePair<int, string> object
+			break;
+		}
 	}
 
 
+	string stateName = "";
 	for (i = 0; i < abbrevState.size(); ++i) {
 		// TODO: Using state abbreviation, find state name
+		if( abbrevState[i].GetKey() == zipAbbrev ) {
+			stateName = abbrevState[i].GetValue();
+			break;
+		}
 	}
 
 
+	int statePop = -1;
 	for (i = 0; i < statePopulation.size(); ++i) {
 		// TODO: Using state name, find population. Print pair info.
+		if( statePopulation[i].GetKey() == stateName ) {
+			statePop = statePopulation[i].GetValue();
+			break;
+		}
 	}
+
+	cout << stateName << ": " << statePop << endl;
 
 }
